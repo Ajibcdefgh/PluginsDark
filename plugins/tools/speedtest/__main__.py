@@ -49,10 +49,10 @@ Sponsor: `{result['server']['sponsor']}`
 Latensi: `{result['server']['latency']}`
 
 Ping: `{result['ping']}`
-terkirim: `{humanbytes(result['bytes_sent'])}`
+Terkirim: `{humanbytes(result['bytes_sent'])}`
 Diterima: `{humanbytes(result['bytes_received'])}`
 Unduhan: `{humanbytes(result['download'] / 8)}/s`
-unggahan: `{humanbytes(result['upload'] / 8)}/s`**"""
+Unggahan: `{humanbytes(result['upload'] / 8)}/s`**"""
     if result['share']:
         msg = await message.client.send_photo(chat_id=message.chat.id,
                                               photo=result['share'],
