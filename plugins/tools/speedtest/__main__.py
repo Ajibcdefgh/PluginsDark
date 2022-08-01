@@ -16,15 +16,15 @@ from userge.utils import humanbytes
 CHANNEL = userge.getCLogger(__name__)
 
 
-@userge.on_cmd("speedtest", about={'header': "test your server speed"})
+@userge.on_cmd("speedtest", about={'header': "uji kecepatan server Anda"})
 async def speedtst(message: Message):
-    await message.edit("`Menjalankan tes kecepatan . . .`")
+    await message.edit("`Menjalankan tes kecepatan server. . .`")
     try:
         test = speedtest.Speedtest()
         test.get_best_server()
-        await message.try_to_edit("`Performing download test . . .`")
+        await message.try_to_edit("`Melakukan tes unduhan. . .`")
         test.download()
-        await message.try_to_edit("`Performing upload test . . .`")
+        await message.try_to_edit("`Melakukan tes unggahan. . .`")
         test.upload()
         try:
             test.results.share()
