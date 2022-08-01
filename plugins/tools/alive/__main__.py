@@ -39,7 +39,7 @@ _LOGO_ID = None
 
 
 @userge.on_cmd("on", about={
-    'header': "This command is just for fun"}, allow_channels=False)
+    'header': "Perintah ini hanya untuk bersenang-senang"}, allow_channels=False)
 async def _alive(message: Message):
     if not (_CHAT and _MSG_ID):
         try:
