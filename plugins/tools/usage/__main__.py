@@ -20,9 +20,9 @@ from userge import config, userge, Message
 async def usage(message: Message):
     """Get your account Dyno Usage"""
     if not config.HEROKU_APP:
-        await message.err("Heroku App Not Found !")
+        await message.err("Heroku App Tidak Ditemukan !")
         return
-    await message.edit("`Processing...`")
+    await message.edit("`Memproses...`")
     useragent = ('Mozilla/5.0 (Linux; Android 10; SM-G975F) '
                  'AppleWebKit/537.36 (KHTML, like Gecko) '
                  'Chrome/80.0.3987.149 Mobile Safari/537.36')
@@ -64,10 +64,10 @@ async def usage(message: Message):
     await asyncio.sleep(1.5)
 
     await message.edit("**Dyno Usage:**\n\n"
-                       f" -> `Dyno usage for`  **{config.HEROKU_APP_NAME}**:\n"
-                       f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
+                       f" -> `Penggunaan Dyno untuk`  **{config.HEROKU_APP_NAME}**:\n"
+                       f"     •  `{AppHours}`**j**  `{AppMinutes}`**m**  "
                        f"**|**  [`{AppPercentage}`**%**]"
                        "\n"
-                       " -> `Dyno hours quota remaining this month`:\n"
-                       f"     •  `{hours}`**h**  `{minutes}`**m**  "
+                       " -> `Dyno tersisa bulan ini`:\n"
+                       f"     •  `{hours}`**j**  `{minutes}`**m**  "
                        f"**|**  [`{percentage}`**%**]")
