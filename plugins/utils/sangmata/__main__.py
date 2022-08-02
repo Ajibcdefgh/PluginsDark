@@ -19,7 +19,7 @@ from userge.utils.exceptions import StopConversation
 @userge.on_cmd("sg", about={
     'header': "Sangmata memberi Anda username dan nama pengguna terakhir yang diperbarui.",
     'flags': {
-        '-u': "Untuk mendapatkan riwayat Nama Pengguna dari Pengguna"},
+        '-u': "Untuk mendapatkan riwayat username dari Pengguna"},
     'usage': "{tr}sg [Balas ke pengguna]\n"
              "{tr}sg -u [Balas ke pengguna]"}, allow_via_bot=False)
 async def sangmata_(message: Message):
