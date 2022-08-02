@@ -29,12 +29,12 @@ from .. import kang
 
 @userge.on_cmd(
     "kang", about={
-        'header': "kang stiker atau buat yang baru",
+        'header': "kangs stickers or creates new ones",
         'flags': {
-            '-s': "tanpa tautan",
-            '-d': "tanpa jejak"},
-        'usage': "Balas {tr}kang [emoji('s)] [nomor pack] ke stiker atau "
-                 "gambar untuk kang ke pack stiker anda.",
+            '-s': "without link",
+            '-d': "without trace"},
+        'usage': "Reply {tr}kang [emoji('s)] [pack number] to a sticker or "
+                 "an image to kang it to your userbot pack.",
         'examples': ["{tr}kang", "{tr}kang -s", "{tr}kang -d",
                      "{tr}kang 🤔😎", "{tr}kang 2", "{tr}kang 🤔🤣😂 2"]},
     allow_channels=False)
@@ -42,7 +42,7 @@ async def kang_(message: Message):
     """ kang a sticker """
     replied = message.reply_to_message
     if not replied or not replied.media:
-        return await message.err("`Saya tidak bisa kang itu...`")
+        return await message.err("`I can't kang that...`")
 
     emoji_ = ""
     is_anim = False
@@ -179,12 +179,12 @@ async def sticker_pack_info_(message: Message):
     """ get sticker pack info """
     replied = message.reply_to_message
     if not replied:
-        await message.err("`Saya tidak dapat mengambil info dari stiker ini!`")
+        await message.err("`I can't fetch info from nothing, can I ?!`")
         return
     if not replied.sticker:
-        await message.err("`Balas stiker untuk mendapatkan detail pack`")
+        await message.err("`Reply to a sticker to get the pack details`")
         return
-    await message.edit("`Mengambil detail pack stiker, harap tunggu..`")
+    await message.edit("`Fetching details of the sticker pack, please wait..`")
     get_stickerset = await message.client.invoke(
         GetStickerSet(
             stickerset=InputStickerSetShortName(
@@ -193,15 +193,15 @@ async def sticker_pack_info_(message: Message):
     for document_sticker in get_stickerset.packs:
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
-    out_str = f"**Judul Stiker:** `{get_stickerset.set.title}\n`" \
-        f"**Nama pendek Stiker:** `{get_stickerset.set.short_name}`\n" \
-        f"**Diarsipkan:** `{get_stickerset.set.archived}`\n" \
-        f"**Resmi:** `{get_stickerset.set.official}`\n" \
-        f"**Masker:** `{get_stickerset.set.masks}`\n" \
-        f"**Video:** `{get_stickerset.set.videos}`\n" \
-        f"**Animasi:** `{get_stickerset.set.animated}`\n" \
-        f"**Stiker Dalam Pack:** `{get_stickerset.set.count}`\n" \
-        f"**Emoji Dalam Pack:**\n{' '.join(pack_emojis)}"
+    out_str = f"**Sticker Title:** `{get_stickerset.set.title}\n`" \
+        f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n" \
+        f"**Archived:** `{get_stickerset.set.archived}`\n" \
+        f"**Official:** `{get_stickerset.set.official}`\n" \
+        f"**Masks:** `{get_stickerset.set.masks}`\n" \
+        f"**Videos:** `{get_stickerset.set.videos}`\n" \
+        f"**Animated:** `{get_stickerset.set.animated}`\n" \
+        f"**Stickers In Pack:** `{get_stickerset.set.count}`\n" \
+        f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
     await message.edit(out_str)
 
 
@@ -352,7 +352,13 @@ async def add_sticker(message: Message, short_name: str, sticker: str, emoji: st
     return True
 
 KANGING_STR = (
-    "stiker lu bagus hehe...",
-    "minta dikit...",
-    "masukin stiker lu ke pack gw...",
-    "mencuri stiker ini... ")
+    "Using Witchery to kang this sticker...",
+    "Plagiarising hehe...",
+    "Inviting this sticker over to my pack...",
+    "Kanging this sticker...",
+    "Hey that's a nice sticker!\nMind if I kang?!..",
+    "hehe me stel ur stikér\nhehe.",
+    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
+    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
+    "Imprisoning this sticker...",
+    "Mr.Steal Your Sticker is stealing this sticker... ")
