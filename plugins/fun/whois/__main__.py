@@ -17,11 +17,11 @@ from userge import userge, Message
 
 
 @userge.on_cmd("whois", about={
-    'header': "gunakan ini untuk mendapatkan detail pengguna apa pun",
-    'usage': "cukup balas pesan pengguna mana pun atau tambahan user_id atau username",
+    'header': "gunakan ini untuk mendapatkan detail pengguna",
+    'usage': "cukup balas pesan pengguna atau tambahkan user_id | username",
     'examples': "{tr}whois [user_id | username]"}, allow_channels=False)
 async def who_is(message: Message):
-    await message.edit("`Mencuri data dari Durov!`")
+    await message.edit("`Mengumpulkan data dari durOv.. Bersabarlah!`")
     user_id = message.input_str
     if user_id:
         try:
@@ -38,23 +38,24 @@ async def who_is(message: Message):
         return
     if from_user or from_chat is not None:
         pp_c = await message.client.get_chat_photos_count(from_user.id)
-        message_out_str = "<b>INFO PENGGUNA:</b>\n\n"
+        message_out_str = "<b>USER INFO:</b>\n\n"
         message_out_str += f"<b>🗣 Nama depan:</b> <code>{from_user.first_name}</code>\n"
-        message_out_str += f"<b>🗣 Nama belakang:</b> <code>{from_user.last_name}</code>\n"
+        message_out_str += f"<b>🗣 Nama Belakang:</b> <code>{from_user.last_name}</code>\n"
         message_out_str += f"<b>👤 Username:</b> @{from_user.username}\n"
         message_out_str += f"<b>🏢 DC ID:</b> <code>{from_user.dc_id}</code>\n"
-        message_out_str += f"<b>🤖 Apakah bot:</b> <code>{from_user.is_bot}</code>\n"
-        message_out_str += f"<b>🚫 Apakah dibatasi:</b> <code>{from_user.is_scam}</code>\n"
-        message_out_str += "<b>✅ Diverifikasi oleh Telegram:</b> "
+        message_out_str += f"<b>🤖 Ini Bot:</b> <code>{from_user.is_bot}</code>\n"
+        message_out_str += f"<b>🚫 Dibatasi:</b> <code>{from_user.is_scam}</code>\n"
+        message_out_str += "<b>✅ Diverifikasi oleh Durov:</b> "
         message_out_str += f"<code>{from_user.is_verified}</code>\n"
-        message_out_str += f"<b>🕵️‍♂️ ID pengguna:</b> <code>{from_user.id}</code>\n"
+        message_out_str += f"<b>⭐ Apakah Premium:</b> <code>{from_user.is_premium}</code>\n"
+        message_out_str += f"<b>🕵️‍♂️ ID Pengguna:</b> <code>{from_user.id}</code>\n"
         message_out_str += f"<b>🖼 Foto Profil:</b> <code>{pp_c}</code>\n"
         try:
             cc_no = len(await message.client.get_common_chats(from_user.id))
         except BotMethodInvalid:
             pass
         else:
-            message_out_str += f"<b>👥 Grup bersama:</b> <code>{cc_no}</code>\n"
+            message_out_str += f"<b>👥 Grup Yang Sama:</b> <code>{cc_no}</code>\n"
         message_out_str += f"<b>📝 Bio:</b> <code>{from_chat.bio}</code>\n\n"
         message_out_str += f"<b>👁 Terakhir terlihat:</b> <code>{from_user.status}</code>\n"
         message_out_str += "<b>🔗 Tautan Permanen Ke Profil:</b> "
