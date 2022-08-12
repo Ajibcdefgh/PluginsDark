@@ -54,7 +54,7 @@ async def who_is(message: Message):
         except BotMethodInvalid:
             pass
         else:
-            message_out_str += f"<b>👥 Obrolan Umum:</b> <code>{cc_no}</code>\n"
+            message_out_str += f"<b>👥 Grup bersama:</b> <code>{cc_no}</code>\n"
         message_out_str += f"<b>📝 Bio:</b> <code>{from_chat.bio}</code>\n\n"
         message_out_str += f"<b>👁 Terakhir terlihat:</b> <code>{from_user.status}</code>\n"
         message_out_str += "<b>🔗 Tautan Permanen Ke Profil:</b> "
