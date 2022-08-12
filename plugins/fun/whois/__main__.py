@@ -39,7 +39,7 @@ async def who_is(message: Message):
     if from_user or from_chat is not None:
         pp_c = await message.client.get_chat_photos_count(from_user.id)
         message_out_str = "<b>USER INFO:</b>\n\n"
-        message_out_str += f"<b>🗣 Nama depan:</b> <code>{from_user.first_name}</code>\n"
+        message_out_str += f"<b>🗣 Nama Depan:</b> <code>{from_user.first_name}</code>\n"
         message_out_str += f"<b>🗣 Nama Belakang:</b> <code>{from_user.last_name}</code>\n"
         message_out_str += f"<b>👤 Username:</b> @{from_user.username}\n"
         message_out_str += f"<b>🏢 DC ID:</b> <code>{from_user.dc_id}</code>\n"
