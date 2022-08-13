@@ -22,7 +22,7 @@ async def usage(message: Message):
     if not config.HEROKU_APP:
         await message.err("Heroku App Tidak Ditemukan !")
         return
-    await message.edit("`Memproses...`")
+    await message.edit("`Mengecek penggunaan dyno...`")
     useragent = ('Mozilla/5.0 (Linux; Android 10; SM-G975F) '
                  'AppleWebKit/537.36 (KHTML, like Gecko) '
                  'Chrome/80.0.3987.149 Mobile Safari/537.36')
@@ -63,7 +63,7 @@ async def usage(message: Message):
 
     await asyncio.sleep(1.5)
 
-    await message.edit("**Dyno Usage:**\n\n"
+    await message.edit("**Penggunaan Dyno:**\n\n"
                        f" -> `Penggunaan Dyno untuk`  **{config.HEROKU_APP_NAME}**:\n"
                        f"     •  `{AppHours}`**j**  `{AppMinutes}`**m**  "
                        f"**|**  [`{AppPercentage}`**%**]"
